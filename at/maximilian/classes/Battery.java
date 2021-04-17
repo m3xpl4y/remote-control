@@ -7,7 +7,6 @@ public class Battery {
     private STATUS status;
     private Remote remote;
     private boolean hasPower;
-    private List<Battery> batteries;
     //CONSTRUCTOR
     public Battery(STATUS status) {
         this.status = status;
@@ -31,18 +30,10 @@ public class Battery {
     public void setHasPower(boolean hasPower) {
         this.hasPower = hasPower;
     }
-    public List<Battery> getBatteries() {
-        return batteries;
-    }
-    public void setBatteries(List<Battery> batteries) {
-        this.batteries = batteries;
-    }
-
     //FUNCTIONS
     public void chargingStatus()
     {
         System.out.println("Ladestatus: ");
-        System.out.println("Batterie 1: " + getBatteries().get(0).getStatus());
-        System.out.println("Batterie 1: " + getBatteries().get(1).getStatus());
+        System.out.println("Batterie: " + getStatus());
     }
 }

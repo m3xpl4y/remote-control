@@ -19,6 +19,8 @@ public class Main {
         remote1.getStatus();
         remote1.turnOn();
         remote1.turnOff();
+        batteryList.get(0).chargingStatus();
+        batteryList.get(1).chargingStatus();
     }
     
 }
