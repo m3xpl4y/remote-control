@@ -1,16 +1,17 @@
 package at.maximilian.classes;
 
+import java.util.List;
+
 public class Remote {
     private boolean isOn;
     private boolean hasPower;
-    private Battery batteries;
+    private List<Battery> batteries;
     //CONSTRUCTOR
-        public Remote(boolean isOn, boolean hasPower) {
-        this.isOn = isOn;
-        this.hasPower = hasPower;
-    }
-    //GETTER & SETTER
 
+    public Remote() {
+    }
+
+    //GETTER & SETTER
         public boolean isOn() {
             return isOn;
         }
@@ -23,20 +24,35 @@ public class Remote {
         public void setHasPower(boolean hasPower) {
             this.hasPower = hasPower;
         }
-        public Battery getBatteries() {
+        public List<Battery> getBatteries() {
             return batteries;
         }
-        public void setBatteries(Battery batteries) 
-        {
-        this.batteries = batteries;
+        public void setBatteries(List<Battery> batteries) {
+            this.batteries = batteries;
         }
+
     //FUNCTIONS
         public void turnOn()
         {
+            if(batteries.get(0).getStatus() == Battery.STATUS.EMPTY && batteries.get(1).getStatus() == Battery.STATUS.EMPTY) {
+                System.out.println("Batterien sind Leer, bitte wechseln");
+                setOn(false);
+            }
+            else
+            {
+                setOn(true);
+                System.out.println("Fernbedienung funktioniert");
 
+            }
         }
         public void turnOff()
         {
-
+            setOn(false);
+            System.out.println("Ausgeschaltet");
+        }
+        public void getStatus()
+        {
+            System.out.println("STATUS Batterie 1: " + getBatteries().get(0).getStatus());
+            System.out.println("STATUS Batterie 1: " + getBatteries().get(1).getStatus());
         }
 }
